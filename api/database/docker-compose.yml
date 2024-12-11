@@ -1,0 +1,13 @@
+services:
+  db:
+    image: postgres:17.2-alpine
+    environment:
+      - POSTGRES_USER=projectmanager
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5006:5006
+    volumes:
+      - db:/var/lib/postgresql/data
+  volumes:
+    db:
+      driver: local
