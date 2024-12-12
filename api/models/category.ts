@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request } from 'express';
 import { Category } from "@prisma/client";
 import { prisma } from "../routes/category";
 
