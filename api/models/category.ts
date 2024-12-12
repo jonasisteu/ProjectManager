@@ -1,5 +1,5 @@
 import { Request } from 'express';
-import { Category } from "@prisma/client";
+import { Category, Project } from "@prisma/client";
 import { prisma } from "../routes/category";
 
 export async function getAllCategories(): Promise<Category[]> {
@@ -16,6 +16,19 @@ export async function getCategory(name: string): Promise<Category | null> {
   });
 
   return category;
+}
+
+export async function getProjectByCategory(name: string): Promise<Category[]> {
+  const projects = await prisma.category.findMany({
+    include: {
+      project: true,
+    },
+    where: { 
+      name: name,
+    },
+  });
+
+  return projects;
 }
 
 export async function createCategory(req: Request): Promise<Category> {
