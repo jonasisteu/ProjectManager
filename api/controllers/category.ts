@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { getAllCategories, getCategory, createCategory, updateCategory, deleteCategory } from '../models/category';
 
-export const categoryConDisplayAll = async (res: Response) => {
+export const categoryConDisplayAll = async (_req: Request, res: Response) => {
     try {
         const categories = await getAllCategories();
         res.status(200).send(categories);
@@ -21,12 +21,12 @@ export const categoryConSingle = async (req: Request, res: Response) => {
 };
 
 export const categoryConCreate = async (req: Request, res: Response) => {
-    // try {
+    try {
         const category = await createCategory(req);
         res.status(201).send(category);
-    // } catch {
-    //     res.status(500).send('{"message": "Code 500: Internal Server Error}');
-    // }
+    } catch {
+        res.status(500).send('{"message": "Code 500: Internal Server Error}');
+    }
 }
 
 export const categoryConUpdate = async (req: Request, res: Response) => {

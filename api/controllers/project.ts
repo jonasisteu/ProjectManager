@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { createProject, deleteProject, getAllProjects, getProject, updateProject } from '../models/project';
 
-export const projectConDisplayAll = async (res: Response) => {
+export const projectConDisplayAll = async (_req: Request, res: Response) => {
     try {
         const projects = await getAllProjects();
         res.status(200).send(projects);
