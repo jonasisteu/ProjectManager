@@ -8,8 +8,8 @@ export async function getAllCategories(): Promise<Category[]> {
   return categories;
 }
 
-export async function getCategory(name: string): Promise<Category | null> {
-  const category = await prisma.category.findUnique({
+export async function getCategory(name: string): Promise<Category[]> {
+  const category = await prisma.category.findMany({
     where: {
       name: name,
     },

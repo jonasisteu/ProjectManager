@@ -4,19 +4,22 @@ import { Footer } from "../components/footer";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 
-interface Category {
+interface Project {
   id: number;
   name: string;
-  project_id: number;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+  url: string;
 }
 
-export const Categories = ({}) => {
-  const [categories, setCategory] = useState<Category[]>([]);
+export const Projects = ({}) => {
+  const [projects, setProject] = useState<Project[]>([]);
 
   useEffect(() => {
     const asyncResponse = async () => {
-      const response = await axios.get("http://localhost:3000/category/");
-      setCategory(response.data);
+      const response = await axios.get("http://localhost:3000/project/");
+      setProject(response.data);
     };
     try {
       asyncResponse();
@@ -29,16 +32,16 @@ export const Categories = ({}) => {
     <div>
       <Navbar />
       <div>
-        <h1>Catégories</h1>
-        <p>Voici toutes les catégories de projets à disposition :</p>
+        <h1>Projets</h1>
+        <p>Voici tout les projets à disposition :</p>
         <ul className="listnavul">
-          {categories.map((category) => {
+          {projects.map((project) => {
             return (
-              <Link to={`/category/${category.name}`}>
-                <li className="listnavli" key={category.name}>
-                  {category.name.replace(
-                    category.name[0],
-                    category.name[0].toUpperCase()
+              <Link to={`/project/${project.name}`}>
+                <li className="listnavli" key={project.name}>
+                  {project.name.replace(
+                    project.name[0],
+                    project.name[0].toUpperCase()
                   )}
                 </li>
               </Link>

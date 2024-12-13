@@ -8,8 +8,8 @@ export async function getAllProjects(): Promise<Project[]> {
   return projects;
 }
 
-export async function getProject(name: string): Promise<Project | null> {
-  const project = await prisma.project.findUnique({
+export async function getProject(name: string): Promise<Project[]> {
+  const project = await prisma.project.findMany({
     where: {
       name: name,
     },
