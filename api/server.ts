@@ -1,5 +1,5 @@
 import express, { Express, Request, Response } from 'express';
-import { CorsOptions } from 'cors';
+import cors, { CorsOptions } from 'cors';
 import { projectRouter } from './routes/project';
 import { categoryRouter } from './routes/category';
 
@@ -13,8 +13,9 @@ const app: Express = express();
 const port: number = 3000;
 
 app.use(express.json());
+app.use(cors(corsOrigin));
 
-app.get('/', (req: Request, res: Response) => {
+app.get('/', (_req: Request, res: Response) => {
     res.status(200).send('<h1>Project Manager</h1>');
 });
 

@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router";
 import { Home } from "./pages/home";
-import { Category } from "./pages/category";
+import { Category } from "./pages/allCategories";
 import { Error500 } from "./pages/error500";
 
 const root = document.getElementById("root");
