@@ -34,7 +34,7 @@ export const Categories = ({}) => {
         <ul className="listnavul">
           {categories.map((category) => {
             return (
-              <Link to={`/category/${category.name}`}>
+              <Link key= {category.name} to={`/category/${category.name}`}>
                 <li className="listnavli" key={category.name}>
                   {category.name.replace(
                     category.name[0],

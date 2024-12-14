@@ -21,7 +21,7 @@ export async function getCategory(name: string): Promise<Category[]> {
 export async function getProjectByCategory(name: string): Promise<Category[]> {
   const projects = await prisma.category.findMany({
     include: {
-      project: true,
+      Project: true,
     },
     where: { 
       name: name,
@@ -35,13 +35,12 @@ export async function createCategory(req: Request): Promise<Category> {
   
   const {
     name,
-    project_id,
   } = req.body;
 
   const category = await prisma.category.create({
     data: {
       name,
-      project_id,
+      Project : {},
     },
   });
 
@@ -52,7 +51,6 @@ export async function updateCategory(req: Request, categoryName: string): Promis
   
   const {
     name,
-    project_id,
   } = req.body;
   
   const post = await prisma.category.update({
@@ -61,7 +59,7 @@ export async function updateCategory(req: Request, categoryName: string): Promis
     },
     data: {
       name,
-      project_id,
+      Project: {},
     },
   });
   

@@ -27,8 +27,6 @@ export const Category = ({}) => {
 
   const [categories, setCategory] = useState<Category[]>([]);
 
-  console.log(`http://localhost:3000/category/${params.name}/projects`);
-
   useEffect(() => {
     const asyncResponse = async () => {
       const response = await axios.get(`http://localhost:3000/category/${params.name}/projects`);
@@ -51,12 +49,9 @@ export const Category = ({}) => {
             <div key={i}>
               <h1 className="category" key={category.name}>{category.name.replace(category.name[0], category.name[0].toUpperCase())}</h1>
               <h2 key={i}>Projets liés :</h2>
-                {category.project.map((project) => {
-                  return(
-                    <Link to={`/project/${project.name}`}><p key={project.name}>{project.name}</p></Link>
-                  );
-                })
-                }
+              {category.project.map((project) => {
+                return <li key={project.name}>{project.name}</li>
+              })}
             </div>
           );
         })}

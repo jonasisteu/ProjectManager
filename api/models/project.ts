@@ -32,11 +32,13 @@ export async function createProject(req: Request): Promise<Project> {
   return project;
 }
 
-export async function updateProject(
-  req: Request,
-  projectName: string
-): Promise<Project> {
-  const { name, description, git_url } = req.body;
+export async function updateProject( req: Request, projectName: string ): Promise<Project> {
+  const {
+    name,
+    description,
+    git_url,
+    cateName,
+  } = req.body;
 
   const project = await prisma.project.update({
     where: {
@@ -46,6 +48,9 @@ export async function updateProject(
       name,
       description,
       git_url,
+      Category: {
+        connect: [cateName],
+      }
     },
   });
 
