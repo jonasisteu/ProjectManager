@@ -11,23 +11,23 @@ export interface Project {
   createdAt: string,
   updatedAt: string,
   url: string,
+  Category: Category[],
 };
 
 interface Category {
   id: number,
   title: string,
-  Project: Project[],
 };
 
 export const Project = ({}) => {
 
   let params = useParams();
 
-  const [category, setCategory] = useState<Category[]>([]);
+  const [project, setCategory] = useState<Project[]>([]);
 
   useEffect(() => {
     const asyncResponse = async () => {
-      const response = await axios.get(`http://localhost:3000/category/${params.name}/projects`);
+      const response = await axios.get(`http://localhost:3000/project/${params.name}`);
       setCategory(response.data);
     };
     try {
@@ -43,20 +43,25 @@ export const Project = ({}) => {
       <div>
         <h1>Projets</h1>
           <div>
-            {category.map((category) => {
+            {project.map((project) => {
               return(
                 <div>
+                    <h1 className="project" key={project.name}>{project.name.replace(project.name[0], project.name[0].toUpperCase())}</h1>
+                    <br />
+                    <p>{project.description}</p>
+                    <Link to={project.url}>
+                      <h2>Acéder au repository</h2>
+                    </Link>
+                    <h2>Catégories :</h2>
                   <div>
-                    {category.Project.map((project) => {
+                    {project.Category.map((category) => {
                       return(
-                        <ul key={project.name}>
+                        <ul key={category.title}>
                           <Link key={project.name} to={`/project/${project.name}`}><li key={project.name}>{project.name}</li></Link>
                         </ul>
                       )
                     })}
                   </div>
-                    <h1 className="category" key={category.title}>{category.title.replace(category.title[0], category.title[0].toUpperCase())}</h1>
-                    <h2>Projets liés :</h2>
                 </div>
               );
             })}

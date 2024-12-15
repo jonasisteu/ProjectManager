@@ -3,17 +3,16 @@ import { Project } from "@prisma/client";
 import { prisma } from "../routes/project";
 
 export async function getAllProjects(): Promise<Project[]> {
-  const projects = await prisma.project.findMany({
-    include: {
-      Category: true,
-    }
-  });
+  const projects = await prisma.project.findMany();
 
   return projects;
 }
 
 export async function getProject(name: string): Promise<Project[]> {
   const project = await prisma.project.findMany({
+    include: {
+      Category: true,
+    },
     where: {
       name: name,
     },
