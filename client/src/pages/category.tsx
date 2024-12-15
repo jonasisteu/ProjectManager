@@ -2,8 +2,7 @@ import axios from "axios";
 import { Navbar } from "../components/navbar";
 import { Footer } from "../components/footer";
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 
 interface Project {
   id: number,
@@ -16,16 +15,15 @@ interface Project {
 
 interface Category {
   id: number,
-  name: string,
-  project_id: number,
-  project: Project[],
+  title: string,
+  Project: Project[],
 };
 
 export const Category = ({}) => {
 
   let params = useParams();
 
-  const [categories, setCategory] = useState<Category[]>([]);
+  const [category, setCategory] = useState<Category[]>([]);
 
   useEffect(() => {
     const asyncResponse = async () => {
@@ -44,17 +42,26 @@ export const Category = ({}) => {
       <Navbar />
       <div>
         <h1>Catégories</h1>
-        {categories.map((category, i) => {
-          return(
-            <div key={i}>
-              <h1 className="category" key={category.name}>{category.name.replace(category.name[0], category.name[0].toUpperCase())}</h1>
-              <h2 key={i}>Projets liés :</h2>
-              {category.project.map((project) => {
-                return <li key={project.name}>{project.name}</li>
-              })}
-            </div>
-          );
-        })}
+          <div>
+            {category.map((category) => {
+              return(
+                <div>
+                  <h1 className="category" key={category.title}>{category.title.replace(category.title[0], category.title[0].toUpperCase())}</h1>
+                  <h2>Projets liés :</h2>
+                  <div>
+                    {category.Project.map((project) => {
+                      return(
+                        <ul key={project.name}>
+                          <Link key={project.name} to={`/project/${project.name}`}><li key={project.name}>{project.name}</li></Link>
+                        </ul>
+                      )
+                    })}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        
       </div>
       <Footer />
     </div>

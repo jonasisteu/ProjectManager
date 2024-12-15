@@ -6,8 +6,7 @@ import { Link } from "react-router";
 
 interface Category {
   id: number;
-  name: string;
-  project_id: number;
+  title: string;
 }
 
 export const Categories = ({}) => {
@@ -34,11 +33,11 @@ export const Categories = ({}) => {
         <ul className="listnavul">
           {categories.map((category) => {
             return (
-              <Link key= {category.name} to={`/category/${category.name}`}>
-                <li className="listnavli" key={category.name}>
-                  {category.name.replace(
-                    category.name[0],
-                    category.name[0].toUpperCase()
+              <Link key={category.title} to={`/category/${category.title}`}>
+                <li className="listnavli" key={category.title}>
+                  {category.title.replace(
+                    category.title[0],
+                    category.title[0].toUpperCase()
                   )}
                 </li>
               </Link>
