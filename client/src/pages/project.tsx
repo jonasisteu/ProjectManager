@@ -10,7 +10,7 @@ export interface Project {
   description: string,
   createdAt: string,
   updatedAt: string,
-  url: string,
+  git_url: string,
   Category: Category[],
 };
 
@@ -47,17 +47,16 @@ export const Project = ({}) => {
               return(
                 <div>
                     <h1 className="project" key={project.name}>{project.name.replace(project.name[0], project.name[0].toUpperCase())}</h1>
-                    <br />
-                    <p>{project.description}</p>
-                    <Link to={project.url}>
+                    <h3>{project.description}</h3>
+                    <a href={`${project.git_url}`}>
                       <h2>Acéder au repository</h2>
-                    </Link>
+                    </a>
                     <h2>Catégories :</h2>
                   <div>
                     {project.Category.map((category) => {
                       return(
                         <ul key={category.title}>
-                          <Link key={project.name} to={`/project/${project.name}`}><li key={project.name}>{project.name}</li></Link>
+                          <Link key={category.title} to={`/category/${category.title}`}><li key={category.title}>{category.title.replace(category.title[0], category.title[0].toUpperCase())}</li></Link>
                         </ul>
                       )
                     })}

@@ -10,7 +10,7 @@ interface Project {
   description: string,
   createdAt: string,
   updatedAt: string,
-  url: string,
+  git_url: string,
 };
 
 interface Category {
