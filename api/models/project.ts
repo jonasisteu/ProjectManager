@@ -19,9 +19,32 @@ export async function getProject(name: string): Promise<Project[]> {
 }
 
 export async function createProject(req: Request): Promise<Project> {
-  const { name, description, git_url } = req.body;
+  const { name, description, git_url, title1, title2 } = req.body;
 
   const project = await prisma.project.create({
+    data: {
+      name,
+      description,
+      git_url,
+      Category: {
+        connect: [{ title: title1 }],
+      },
+    },
+  });
+
+  return project;
+}
+
+export async function updateProject(
+  req: Request,
+  projectName: string
+): Promise<Project> {
+  const { name, description, git_url } = req.body;
+
+  const project = await prisma.project.update({
+    where: {
+      name: projectName,
+    },
     data: {
       name,
       description,
@@ -32,25 +55,34 @@ export async function createProject(req: Request): Promise<Project> {
   return project;
 }
 
-export async function updateProject( req: Request, projectName: string ): Promise<Project> {
-  const {
-    name,
-    description,
-    git_url,
-    cateName,
-  } = req.body;
+export async function connectProject(req: Request, projectName: string): Promise<Project> {
+  const { title } = req.body;
 
   const project = await prisma.project.update({
     where: {
       name: projectName,
     },
     data: {
-      name,
-      description,
-      git_url,
       Category: {
-        connect: [cateName],
-      }
+        connect: { title: title },
+      },
+    },
+  });
+
+  return project;
+}
+
+export async function disconnectProject(req: Request, projectName: string): Promise<Project> {
+  const { title } = req.body;
+
+  const project = await prisma.project.update({
+    where: {
+      name: projectName,
+    },
+    data: {
+      Category: {
+        disconnect: { title: title },
+      },
     },
   });
 
