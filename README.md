@@ -44,12 +44,12 @@ Welcome to **Project Manager**, a full-stack REST API application that allows se
   ```  
 
 ### 4. Run the Application  
-- Start the back-end server:  
+- Start the back-end server after navigating to the `api` folder:  
   ```bash  
   cd api  
   npm run dev  
   ```  
-- Start the front-end server in a separate terminal:  
+- Start the front-end server in a separate terminal after navigating to the `client` folder:  
   ```bash  
   cd client  
   npm run dev  
@@ -60,7 +60,13 @@ Welcome to **Project Manager**, a full-stack REST API application that allows se
 ## 🧪 Usage  
 Once both servers are running, you can:  
 1. Access the front-end via your browser.  
-2. Create, view, and edit projects and categories interactively.  
+2. Create, view, and edit projects and categories interactively.
+
+### 💡 Tip
+If you want to take a look to the database you can also navigate to the `api/database/prisma` and run the following command:
+  ```bash
+  npx prisma studio
+  ```
 
 ---
 
