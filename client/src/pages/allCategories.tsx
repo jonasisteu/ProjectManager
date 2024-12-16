@@ -29,16 +29,14 @@ export const Categories = ({}) => {
       <Navbar />
       <div>
         <h1>Catégories</h1>
+        <Link to="/category/create"><p>Créer une catégorie</p></Link>
         <p>Voici toutes les catégories de projets à disposition :</p>
         <ul className="listnavul">
           {categories.map((category) => {
             return (
               <Link key={category.title} to={`/category/${category.title}`}>
                 <li className="listnavli" key={category.title}>
-                  {category.title.replace(
-                    category.title[0],
-                    category.title[0].toUpperCase()
-                  )}
+                  {category.title}
                 </li>
               </Link>
             );

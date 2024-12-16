@@ -8,7 +8,7 @@ interface Category {
   title: string;
 }
 
-export const CreateProject = ({}) => {
+export const EditProject = ({}) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [url, setGit] = useState('');
@@ -38,7 +38,7 @@ export const CreateProject = ({}) => {
 
     try {
       asyncResponse();
-      alert(`Le projet ${formJson.name} a été créé avec succès.`);
+      alert(`Le projet ${formJson.name} a été modifié avec succès.`);
       return window.location.assign("http://localhost:5173/project");
 
     } catch {

@@ -3,7 +3,7 @@ import { Footer } from "../components/footer";
 import { useState } from "react";
 import axios from "axios";
 
-export const CreateCategory = ({}) => {
+export const EditCategory = ({}) => {
   const [title, setTitle] = useState('');
 
   const postForm = (e: React.FormEvent<EventTarget>) => {
@@ -27,7 +27,7 @@ export const CreateCategory = ({}) => {
 
     try {
       asyncResponse();
-      alert(`La catégorie ${formJson.title} a été créé avec succès.`);
+      alert(`La catégorie ${formJson.title} a été modifiée avec succès.`);
       return window.location.assign("http://localhost:5173/category");
     } catch {
       return window.location.assign("http://localhost:5173/error/500/");

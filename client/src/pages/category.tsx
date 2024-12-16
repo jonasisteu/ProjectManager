@@ -3,6 +3,7 @@ import { Navbar } from "../components/navbar";
 import { Footer } from "../components/footer";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
+import { DeleteCategory } from "../components/delete";
 
 interface Project {
   id: number,
@@ -46,7 +47,10 @@ export const Category = ({}) => {
             {category.map((category) => {
               return(
                 <div>
-                  <h1 className="category" key={category.title}>{category.title.replace(category.title[0], category.title[0].toUpperCase())}</h1>
+                  <div>
+                    <h1 className="category" key={category.title}>{category.title}</h1>
+                    <DeleteCategory />
+                  </div>
                   <h2>Projets liés :</h2>
                   <div>
                     {category.Project.map((project) => {

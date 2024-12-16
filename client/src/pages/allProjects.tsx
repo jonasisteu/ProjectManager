@@ -33,16 +33,14 @@ export const Projects = ({}) => {
       <Navbar />
       <div>
         <h1>Projets</h1>
+        <Link to="/project/create"><p>Créer un projet</p></Link>
         <p>Voici tout les projets à disposition :</p>
         <ul className="listnavul">
           {projects.map((project) => {
             return (
               <Link to={`/project/${project.name}`}>
                 <li className="listnavli" key={project.name}>
-                  {project.name.replace(
-                    project.name[0],
-                    project.name[0].toUpperCase()
-                  )}
+                  {project.name}
                 </li>
               </Link>
             );

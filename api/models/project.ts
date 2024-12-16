@@ -92,10 +92,10 @@ export async function disconnectProject(req: Request, projectName: string): Prom
   return project;
 }
 
-export async function deleteProject(cateName: string): Promise<Project> {
+export async function deleteProject(projectName: string): Promise<Project> {
   const project = await prisma.project.delete({
     where: {
-      name: cateName,
+      name: projectName,
     },
   });
 

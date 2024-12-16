@@ -3,6 +3,7 @@ import { Navbar } from "../components/navbar";
 import { Footer } from "../components/footer";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
+import { DeleteProject } from "../components/delete";
 
 export interface Project {
   id: number,
@@ -46,7 +47,10 @@ export const Project = ({}) => {
             {project.map((project) => {
               return(
                 <div>
-                    <h1 className="project" key={project.name}>{project.name.replace(project.name[0], project.name[0].toUpperCase())}</h1>
+                  <div>
+                    <h1 className="project" key={project.name}>{project.name}</h1>
+                    <DeleteProject />
+                  </div>
                     <h3>{project.description}</h3>
                     <a href={`${project.git_url}`}>
                       <h2>Acéder au repository</h2>
