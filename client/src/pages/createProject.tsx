@@ -20,15 +20,11 @@ export const CreateProject = ({}) => {
 
     e.preventDefault();
     
-    // const form: HTMLFormElement = e.target as HTMLFormElement;<
     const formData = new FormData();
     formData.append('name', name);
     formData.append('description', description);
     formData.append('git_url', url);
-    formData.append('title', title)
 
-
-    // Or you can work with it as a plain object:
     const formJson = Object.fromEntries(formData.entries());
     console.log(formJson);
 
@@ -36,8 +32,19 @@ export const CreateProject = ({}) => {
       await axios.post("http://localhost:3000/project", formJson);
     };
 
+    const formDataConnect = new FormData();
+    formData.append('title', title)
+
+    const formJsonConnect = Object.fromEntries(formDataConnect.entries());
+    console.log(formJsonConnect);
+
+    const asyncConnect = async () => {
+      await axios.put(`http://localhost:3000/project/${name}/connect`, formJsonConnect);
+    };
+
     try {
       asyncResponse();
+      asyncConnect();
       alert(`Le projet ${formJson.name} a été créé avec succès.`);
       return window.location.assign("http://localhost:5173/project");
 

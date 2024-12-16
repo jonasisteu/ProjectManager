@@ -22,16 +22,13 @@ export async function getProject(name: string): Promise<Project[]> {
 }
 
 export async function createProject(req: Request): Promise<Project> {
-  const { name, description, git_url, title } = req.body;
+  const { name, description, git_url } = req.body;
 
   const project = await prisma.project.create({
     data: {
       name,
       description,
       git_url,
-      Category: {
-        connect: [{ title }],
-      },
     },
   });
 
