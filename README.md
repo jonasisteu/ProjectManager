@@ -14,7 +14,7 @@ Welcome to **Project Manager**, a full-stack REST API application that allows se
 ### 1. Clone or Download the Project  
 - Clone this repository:  
   ```bash  
-  git clone https://github.com/your-username/ProjectManager.git  
+  git clone https://github.com/jonasisteu/ProjectManager.git  
   ```  
   OR  
 - Download the `.zip` file and extract it in the folder of your choice.  
