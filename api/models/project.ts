@@ -8,8 +8,11 @@ export async function getAllProjects(): Promise<Project[]> {
   return projects;
 }
 
-export async function getProject(name: string): Promise<Project | null> {
-  const project = await prisma.project.findUnique({
+export async function getProject(name: string): Promise<Project[]> {
+  const project = await prisma.project.findMany({
+    include: {
+      Category: true,
+    },
     where: {
       name: name,
     },
@@ -19,13 +22,16 @@ export async function getProject(name: string): Promise<Project | null> {
 }
 
 export async function createProject(req: Request): Promise<Project> {
-  const { name, description, git_url } = req.body;
+  const { name, description, git_url, title } = req.body;
 
   const project = await prisma.project.create({
     data: {
       name,
       description,
       git_url,
+      Category: {
+        connect: [{ title }],
+      },
     },
   });
 
@@ -52,10 +58,44 @@ export async function updateProject(
   return project;
 }
 
-export async function deleteProject(cateName: string): Promise<Project> {
+export async function connectProject(req: Request, projectName: string): Promise<Project> {
+  const { title } = req.body;
+
+  const project = await prisma.project.update({
+    where: {
+      name: projectName,
+    },
+    data: {
+      Category: {
+        connect: { title: title },
+      },
+    },
+  });
+
+  return project;
+}
+
+export async function disconnectProject(req: Request, projectName: string): Promise<Project> {
+  const { title } = req.body;
+
+  const project = await prisma.project.update({
+    where: {
+      name: projectName,
+    },
+    data: {
+      Category: {
+        disconnect: { title: title },
+      },
+    },
+  });
+
+  return project;
+}
+
+export async function deleteProject(projectName: string): Promise<Project> {
   const project = await prisma.project.delete({
     where: {
-      name: cateName,
+      name: projectName,
     },
   });
 

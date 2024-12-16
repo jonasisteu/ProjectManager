@@ -20,13 +20,13 @@ model Project {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   git_url     String   @unique
-  
+
   Category Category[]
 }
 
 model Category {
-  id      Int       @id @default(autoincrement())
-  name    String    @unique
-  project Project @relation(fields: [project_id], references: [id])
-  project_id Int
+  id    Int    @id @default(autoincrement())
+  title String @unique
+
+  Project Project[]
 }
