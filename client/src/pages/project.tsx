@@ -4,6 +4,7 @@ import { Footer } from "../components/footer";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import { DeleteProject } from "../components/delete";
+import { ButtonEditProject } from "../components/edit";
 
 export interface Project {
   id: number,
@@ -49,7 +50,7 @@ export const Project = ({}) => {
                 <div>
                   <div>
                     <h1 className="project" key={project.name}>{project.name}</h1>
-                    <DeleteProject />
+                    <ButtonEditProject /><DeleteProject />
                   </div>
                     <h3>{project.description}</h3>
                     <a href={`${project.git_url}`}>

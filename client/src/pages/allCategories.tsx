@@ -3,6 +3,7 @@ import { Navbar } from "../components/navbar";
 import { Footer } from "../components/footer";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
+import pencil from "../assets/pencil.svg";
 
 interface Category {
   id: number;
@@ -34,11 +35,16 @@ export const Categories = ({}) => {
         <ul className="listnavul">
           {categories.map((category) => {
             return (
-              <Link key={category.title} to={`/category/${category.title}`}>
-                <li className="listnavli" key={category.title}>
-                  {category.title}
-                </li>
-              </Link>
+              <div>
+                <Link key={category.title} to={`/category/${category.title}`}>
+                  <li className="listnavli" key={category.title}>
+                    {category.title}
+                  </li>
+                </Link>
+                <Link to={`/category/${category.title}/edit`}>
+                  <img src={pencil} alt="logo d'édition" />
+                </Link>
+              </div>
             );
           })}
         </ul>

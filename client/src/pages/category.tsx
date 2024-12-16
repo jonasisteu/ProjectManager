@@ -4,6 +4,7 @@ import { Footer } from "../components/footer";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import { DeleteCategory } from "../components/delete";
+import { ButtonEditCategory } from "../components/edit";
 
 interface Project {
   id: number,
@@ -49,7 +50,7 @@ export const Category = ({}) => {
                 <div>
                   <div>
                     <h1 className="category" key={category.title}>{category.title}</h1>
-                    <DeleteCategory />
+                    <ButtonEditCategory /><DeleteCategory />
                   </div>
                   <h2>Projets liés :</h2>
                   <div>

@@ -3,6 +3,7 @@ import { Navbar } from "../components/navbar";
 import { Footer } from "../components/footer";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
+import pencil from "../assets/pencil.svg";
 
 interface Project {
   id: number;
@@ -38,11 +39,16 @@ export const Projects = ({}) => {
         <ul className="listnavul">
           {projects.map((project) => {
             return (
-              <Link to={`/project/${project.name}`}>
-                <li className="listnavli" key={project.name}>
-                  {project.name}
-                </li>
-              </Link>
+              <div>
+                <Link to={`/project/${project.name}`}>
+                  <li className="listnavli" key={project.name}>
+                    {project.name}
+                  </li>
+                </Link>
+                <Link to={`/project/${project.name}/edit`}>
+                  <img src={pencil} alt="logo d'édition" />
+                </Link>
+              </div>
             );
           })}
         </ul>

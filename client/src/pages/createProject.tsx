@@ -101,7 +101,7 @@ export const CreateProject = ({}) => {
         </label>
         <br />
         <label htmlFor="title">
-          Le lier à un projet : <br />
+          Le lier à une catégorie : <br />
           <select name="title" id="title" value={title} onChange={e => setTitle(e.target.value)}required>
             <option value="">Choisir une catégorie à connecter au projet</option>
             {categories.map((category) => {
