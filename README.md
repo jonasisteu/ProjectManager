@@ -21,7 +21,7 @@ Welcome to **Project Manager**, a full-stack REST API application that allows se
 
 ### 2. Install Dependencies  
 - Open your terminal and navigate to the **ProjectManager** folder.  
-- Make sure **Node.js** is installed on your computer, then install back-end dependencies:  
+- Make sure **Node.js** is installed on your computer, then navigate to the `api` folder and install back-end dependencies:  
   ```bash  
   cd api
   npm install  
@@ -66,6 +66,4 @@ Once both servers are running, you can:
 
 ## 📚 Technologies Used  
 - **Back-end**: Node.js, ExpressJS, Prisma, Docker  
-- **Front-end**: ReactJS, TypeScript  
-
-```
+- **Front-end**: ReactJS, TypeScript
