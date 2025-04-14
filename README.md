@@ -1,8 +1,3 @@
-C'est étrange que vous rencontriez ce problème. Le "OU" fait partie intégrante du format Markdown et ne devrait pas empêcher la copie.
-
-Voici une autre façon de vous présenter le code Markdown, en m'assurant qu'il n'y ait pas de caractères invisibles ou d'éléments qui pourraient perturber la copie. Essayez de copier à partir de ce bloc :
-
-```markdown
 # 🗂️ Project Manager
 
 Bienvenue dans **Project Manager**, une application API REST complète (full-stack) qui permet une interaction fluide entre les **projets** et les **catégories**.
